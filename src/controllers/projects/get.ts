@@ -10,7 +10,7 @@ export const get = async (req: Request, res: Response) => {
 
     const { lang } = req.query;
 
-    const projects = await project.get({ prisma, lang });
+    const projects = await project.get(lang);
 
     return res.status(200).json(projects);
   } catch (err) {

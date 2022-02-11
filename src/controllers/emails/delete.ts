@@ -7,7 +7,7 @@ export const edelete = async (req: Request, res: Response) => {
   try {
     logger.info("[Delete Emails] Delete subscription");
 
-    await email.edelete(req.query.email, prisma);
+    await email.edelete(req.query.email);
 
     return res.status(200).json("Inscrição encerrada com sucesso!");
   } catch (err) {

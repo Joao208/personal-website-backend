@@ -17,7 +17,7 @@ export const sendAllRecipients = async ({
 }) => {
   logger.info("[sendAllRecipients] Sending emails for all recipients");
 
-  const allRecipients = await emails.get(prisma);
+  const allRecipients = await emails.get();
 
   logger.info(
     `[sendAllRecipients] total of recipients ${allRecipients?.length}`

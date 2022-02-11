@@ -1,9 +1,5 @@
-export const get = async ({
-  prisma,
-  lang = "en",
-}: {
-  prisma: any;
-  lang: any;
-}) => {
+import prisma from "../../../config/prisma";
+
+export const get = async (lang: any = "pt") => {
   return prisma.project.findMany({ where: { lang } });
 };

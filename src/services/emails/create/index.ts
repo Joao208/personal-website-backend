@@ -1,4 +1,6 @@
-export const create = async (email: string | undefined, prisma: any) => {
+import prisma from "../../../config/prisma";
+
+export const create = async (email: string | undefined) => {
   if (!email) return;
 
   return prisma.subscriptions.create({

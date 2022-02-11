@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import prisma from "../../config/prisma";
 import { logger } from "../../services";
 import { error } from "../../services/error";
 import * as posts from "../../services/posts";
@@ -12,7 +11,6 @@ export const get = async (req: Request, res: Response) => {
 
     const postsfinded = await posts.get({
       pageId,
-      prisma,
       lang,
     });
 

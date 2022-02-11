@@ -1,12 +1,7 @@
-export const get = async ({
-  pageId,
-  prisma,
-  lang = "en",
-}: {
-  pageId: any;
-  prisma: any;
-  lang: any;
-}) => {
+import prisma from "../../../config/prisma";
+import { GetParams } from "./get";
+
+export const get = async ({ pageId, lang = "en" }: GetParams) => {
   if (pageId && pageId !== "undefined") {
     return prisma.post.findUnique({ where: { id: pageId } });
   }

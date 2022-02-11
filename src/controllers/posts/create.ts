@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import prisma from "../../config/prisma";
 import { logger } from "../../services";
 import { sendAllRecipients } from "../../services/communication/sendAllRecipients";
 import { error } from "../../services/error";
@@ -9,7 +8,7 @@ export const create = async (req: Request, res: Response) => {
   try {
     logger.info("[Create Posts] Create new post");
 
-    const post = await posts.create(req.body, prisma);
+    const post = await posts.create(req.body);
 
     await sendAllRecipients({
       title: post?.title,
