@@ -3,8 +3,8 @@ import { logger } from "..";
 import { newPost } from "../../templates/newpost";
 
 const SES_CONFIG = {
-  accessKeyId: process.env.ACCESS_KEY,
-  secretAccessKey: process.env.SECRET_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY,
   region: "us-east-2",
 };
 
