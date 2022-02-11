@@ -1,0 +1,44 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+model Post {
+  id          String      @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  markdown    String
+  subtitle    String
+  cover       String
+  lang        String      @default("en")
+  SentEmail   SentEmail[]
+  createdAt   DateTime
+}
+
+model Project {
+  id          String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  gitLink     String
+  cover       String
+  lang        String @default("en")
+}
+
+model Subscriptions {
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  email     String   @unique
+  createdAt DateTime
+}
+
+model SentEmail {
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  post      Post     @relation(fields: [PostId], references: [id])
+  PostId    String   @db.ObjectId
+  emails    String[] @db.Array(String)
+  createdAt DateTime
+}
