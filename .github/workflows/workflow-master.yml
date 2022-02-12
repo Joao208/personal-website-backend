@@ -6,21 +6,18 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: lucasalt/act_base:latest
+  test-flow:
+    name: Workflow
+    runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: bk_personal_website
 
       - name: Install dev dependencies
         run: yarn install
 
       - name: Create Databse
-        run: sudo docker-compose -f ./bk_personal_website/docker-compose.test.yml -p testing up -d
+        run: sudo docker-compose -f docker-compose.test.yml -p testing up -d
 
       - name: Run the tests
         run: yarn test:ci
