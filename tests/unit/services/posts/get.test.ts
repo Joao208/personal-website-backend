@@ -1,5 +1,12 @@
 import * as posts from "../../../../src/services/posts";
 
+jest.mock("../../../../src/config/prisma", () => ({
+  post: {
+    findUnique: jest.fn().mockReturnValue({ id: "" }),
+    findMany: jest.fn().mockReturnValue([{ id: "" }]),
+  },
+}));
+
 describe("[Post get service] Test case", () => {
   it("Should get post by id", async () => {
     const response = await posts.get({ pageId: "id" });

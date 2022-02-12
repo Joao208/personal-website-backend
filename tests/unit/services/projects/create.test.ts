@@ -1,5 +1,11 @@
 import * as projects from "../../../../src/services/projects";
 
+jest.mock("../../../../src/config/prisma", () => ({
+  project: {
+    create: jest.fn().mockReturnValue({ id: "" }),
+  },
+}));
+
 describe("[Project create service] Test case", () => {
   it("Should create new post", async () => {
     const data = {

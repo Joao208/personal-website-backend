@@ -22,7 +22,7 @@ jobs:
       - name: Create env file
         run: |
           cat << EOF > .env
-          DATABASE_URL=mongodb://localhost:27017/local
+          DATABASE_URL=mongodb://localhost:27017/local?retryWrites=false
           EOF
 
       - name: Run the tests
