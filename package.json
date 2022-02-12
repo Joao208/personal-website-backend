@@ -13,7 +13,7 @@
     "test": "NODE_ENV=test jest --coverage --silent --forceExit --detectOpenHandles",
     "test:unit": "yarn test -- --watch -c jest-unit-config.js",
     "test:coverage": "NODE_ENV=test ./node_modules/.bin/jest --coverage --silent --ci --forceExit --detectOpenHandles",
-    "test:ci": "npx prisma generate && yarn test:coverage"
+    "test:ci": "DATABASE_URL=mongodb://localhost:27017/local npx prisma generate && yarn test:coverage"
   },
   "dependencies": {
     "@prisma/client": "^3.9.2",

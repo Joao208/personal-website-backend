@@ -10,11 +10,7 @@ describe("[Post create service] Test case", () => {
       cover: "https://localhost:5000",
     };
 
-    const prisma = {
-      post: { create: jest.fn().mockReturnValue({ id: "" }) },
-    };
-
-    const response = await posts.create(data, prisma);
+    const response = await posts.create(data);
 
     expect(response).toStrictEqual({ id: "" });
   });

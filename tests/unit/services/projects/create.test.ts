@@ -10,11 +10,7 @@ describe("[Project create service] Test case", () => {
       gitLink: "https://localhost:5000",
     };
 
-    const prisma = {
-      project: { create: jest.fn().mockReturnValue({ id: "" }) },
-    };
-
-    const response = await projects.create(data, prisma);
+    const response = await projects.create(data);
 
     expect(response).toStrictEqual({ id: "" });
   });
