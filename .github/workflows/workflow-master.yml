@@ -6,19 +6,18 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  test-flow:
-    name: Workflow
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: lucasalt/act_base:latest
 
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          path: bk_personal_website
 
       - name: Install dev dependencies
         run: yarn install
-
-      - uses: docker-practice/actions-setup-docker@master
 
       - name: Create Databse
         run: sudo docker-componse up
@@ -33,3 +32,5 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
           verbose: true
+
+          
