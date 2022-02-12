@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Create Databse
-        run: sudo docker-compose ./bk_personal_website/docker-compose.test.yml up
+        run: sudo docker-compose -f ./bk_personal_website/docker-compose.test.yml up
 
       - name: Run the tests
         run: yarn test:ci
