@@ -19,6 +19,12 @@ jobs:
       - name: Create Databse
         run: sudo docker-compose -f docker-compose.test.yml -p testing up -d
 
+      - name: Create env file
+        run: |
+          cat << EOF > .env
+          DATABASE_URL=mongodb://localhost:27017/local
+          EOF
+
       - name: Run the tests
         run: yarn test:ci
 

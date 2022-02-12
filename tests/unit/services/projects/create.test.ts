@@ -5,7 +5,6 @@ describe("[Project create service] Test case", () => {
     const data = {
       title: "Test",
       description: "Test",
-      markdown: "Test",
       cover: "https://localhost:5000",
       gitLink: "https://localhost:5000",
     };
