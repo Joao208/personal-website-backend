@@ -18,8 +18,10 @@ jobs:
       - name: Install dev dependencies
         run: yarn install
 
+      - uses: docker-practice/actions-setup-docker@master
+
       - name: Create Databse
-        run: docker-componse up
+        run: sudo docker-componse up
 
       - name: Run the tests
         run: yarn test:ci
