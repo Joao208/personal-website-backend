@@ -9,7 +9,7 @@ generator client {
 }
 
 model Post {
-  id          String      @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   markdown    String
@@ -21,7 +21,7 @@ model Post {
 }
 
 model Project {
-  id          String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   gitLink     String
@@ -30,15 +30,15 @@ model Project {
 }
 
 model Subscriptions {
-  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   createdAt DateTime
 }
 
 model SentEmail {
-  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   post      Post     @relation(fields: [PostId], references: [id])
   PostId    String   @db.ObjectId
-  emails    String[] @db.Array(String)
+  emails    String[]
   createdAt DateTime
 }
