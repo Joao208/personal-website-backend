@@ -9,12 +9,12 @@ export const get = async (req: Request, res: Response) => {
 
     const { lang, pageId } = req.query;
 
-    const postsfinded = await posts.get({
+    const postsFound = await posts.get({
       pageId,
       lang,
     });
 
-    return res.status(200).json(postsfinded);
+    return res.status(200).json(postsFound);
   } catch (err) {
     return error({ res, err });
   }
